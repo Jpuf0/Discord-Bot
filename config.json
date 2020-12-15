@@ -1,0 +1,12 @@
+{
+    "discord": {
+        "allowed-users": ["420893806049624074", "735850534489030668"],
+        "clientSecret": "ziWQ5Yuj7I5yYP_5ZLohnb0Gh7diZXrR",
+        "token": "Nzg4NTM4MTc4NDExODIzMTE1.X9k9aA.gl4M48pPJE6U9VkTngkIGzIegXQ",
+        "prefix": "p/",
+        "ids": {
+            "serverID": "786604027718271026",
+            "channelRules": "786897078043279361"
+        }
+    }
+}
