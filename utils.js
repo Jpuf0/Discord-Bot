@@ -5,7 +5,7 @@ module.exports = {
         const messages = await msg._client.getMessages(config.discord.ids.channelRules)
         let rules
         messages.reverse().forEach(msg => {
-            rules += msg.content.slice(6, msg.contnet.length - 3)
+            rules += msg.content.slice(6, msg.content.length - 3)
         })
         rules += '||||'
 
@@ -19,7 +19,7 @@ module.exports = {
                 const channel = msg.channel.guild.channels.find(c => c.name === name)
                 return channel ? `<#${channel.id}>` : og
             })
-            .replace(/Actions: /, '\nActions: ')
+            .replace(/Actions: /, '\n\nActions: ')
         
         return rule.slice(0, rule.length - 4).trim()
     },
@@ -51,5 +51,15 @@ module.exports = {
             m ? `${m} ${plurialify(m, 'minute')}` : '',
             s ? `${s} ${plurialify(s, 'second')}` : ''
           ].filter(Boolean).join(', ') || 'under a second'
-    }
+    },
+    
+    cleanString(input) {
+        var output = "";
+        for (var i=0; i<input.length; i++) {
+            if (input.charCodeAt(i) <= 127) {
+                output += input.charAt(i);
+            }
+        }
+        return output;
+      }
 }

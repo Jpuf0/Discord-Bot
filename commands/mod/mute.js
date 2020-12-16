@@ -2,10 +2,10 @@ const config = require('../../config.json')
 const task = require('../../tasks')
 const { parseDuration, cleanString } = require('../../utils')
 
-const USAGE_STR = `Usage: ${config.discord.prefix}ban [mention] (reason)|(duration)`
+const USAGE_STR = `Usage: ${config.discord.prefix}mute [mention] (reason)|(duration)`
 
 module.exports = async function (msg, args) {
-  if (!msg.member.permission.has('banMembers')) {
+  if (!msg.member.permission.has('manageMessages')) {
     return msg.channel.createMessage('no')
   }
 
@@ -18,7 +18,7 @@ module.exports = async function (msg, args) {
   const rawDuration = msg.content.includes('|') ? msg.content.split('|')[1].trim().toLowerCase().match(/\d+(m|h|d)/) : null
 
   if (target === msg.author.id) {
-    return msg.channel.createMessage('Don\'t do that to yourself')
+    return msg.channel.createMessage('You cannot be silenced')
   }
 
   if (rawDuration) {
@@ -28,7 +28,7 @@ module.exports = async function (msg, args) {
     }
 
     const entry = task.EMPTY_TASK_OBJ
-    entry.type = 'unban'
+    entry.type = 'unmute'
     entry.target = target
     entry.mod = `${msg.author.username}#${msg.author.discriminator}`
     entry.time = Date.now() + duration
@@ -36,6 +36,6 @@ module.exports = async function (msg, args) {
     msg._client.mongo.collection('tasks').insertOne(entry)
   }
 
-  task.ban(msg._client, target, `${cleanString(msg.author.username)}#${msg.author.discriminator}`, `${reason} ${rawDuration ? `(for ${rawDuration[0]})` : ''}`)
-  return msg.channel.createMessage('Ultra-yeeted')
+  task.mute(msg._client, target, `${cleanString(msg.author.username)}#${msg.author.discriminator}`, `${reason} ${rawDuration ? `(for ${rawDuration[0]})` : ''}`)
+  return msg.channel.createMessage('Shut')
 }

@@ -6,7 +6,16 @@
         "prefix": "p/",
         "ids": {
             "serverID": "786604027718271026",
-            "channelRules": "786897078043279361"
+            "channelRules": "788610911089983499",
+            "roleMuted": "788616346413957160",
+            "channelStarboard": "788595212837453855",
+            "channelModLogs": "788612527168815146",
+            "channelMessageLogs": "788595631493087232",
+            "channelMemberLogs": "788595655941423163"
         }
-    }
+    },
+    "mango": "mongodb+srv://Yui:YuiTheAi@dao-bot.yxbij.mongodb.net/Yui?retryWrites=true&w=majority",
+    "domain": "",
+    "secret": "",
+    "ghToken": ""
 }
