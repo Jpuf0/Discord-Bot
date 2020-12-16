@@ -1,6 +1,7 @@
 {
     "discord": {
         "allowed-users": ["420893806049624074", "735850534489030668"],
+        "OwnerID": "420893806049624074",
         "clientSecret": "ziWQ5Yuj7I5yYP_5ZLohnb0Gh7diZXrR",
         "token": "Nzg4NTM4MTc4NDExODIzMTE1.X9k9aA.gl4M48pPJE6U9VkTngkIGzIegXQ",
         "prefix": "p/",
@@ -11,7 +12,11 @@
             "channelStarboard": "788595212837453855",
             "channelModLogs": "788612527168815146",
             "channelMessageLogs": "788595631493087232",
-            "channelMemberLogs": "788595655941423163"
+            "channelMemberLogs": "788595655941423163",
+            "shitstars": {
+                "users": [],
+                "channels": ["786899143842725889", "787050830427193364", "786899063915282452"]
+              }
         }
     },
     "mango": "mongodb+srv://Yui:YuiTheAi@dao-bot.yxbij.mongodb.net/Yui?retryWrites=true&w=majority",

@@ -5,10 +5,12 @@ const config = require("./config.json");
 const modlog = require('./modlog')
 const sniper = require('./sniper')
 const logger = require('./logger')
+const stats = require('./stats')
 const starboard = require('./starboard')
 const task = require('./tasks')
 const autotag = require('./autotag')
-const memberLog = require('./memberlog')
+const memberLog = require('./memberlog');
+const { humanTime } = require("./utils");
 
 const clientOptions = {
     intents: [
@@ -41,17 +43,26 @@ bot.registerCommand('enforce', require('./commands/mod/enforce'))
 
 //Admin
 bot.registerCommand('eval', require('./commands/admin/eval'))
+bot.registerCommand('ssh', require('./commands/admin/ssh'))
+bot.registerCommand('stats', require('./commands/stat'))
 
 //Other
 modlog.register(bot);
 sniper.register(bot);
 logger.register(bot);
 starboard.register(bot);
+stats.register(bot);
 autotag.register(bot);
 memberLog.register(bot);
 
 
-bot.on('ready', () => { console.log(`logged in as ${bot.user.username}#${bot.user.discriminator}`) })
+bot.on('ready', () => { 
+    console.log(`logged in as ${bot.user.username}#${bot.user.discriminator}`)
+    bot.getDMChannel(config.discord.OwnerID)
+        .then(channel => {
+            channel.createMessage(`Yui Is Online!`)
+        })
+})
 
 console.log('Connecting to Mongo')
 //USERNAME:Yui

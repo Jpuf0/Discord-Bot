@@ -12,7 +12,7 @@ module.exports = async function (msg) {
         return msg.channel.createMessage('bitch what?')
     }
 
-    const m = await msg.channel.createMessage('<a:loading:788523039892439051> brrr...')
+    const m = await msg.channel.createMessage('<a:loading:788845427072040991> Computing...')
     const start = Date.now();
 
     let js = `const bot = msg._client; const mongo = bot.mongo; ${script}`;
