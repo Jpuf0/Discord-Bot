@@ -14,7 +14,7 @@ $message
 module.exports = {
   register (bot) {
     bot.on('messageDelete', (msg) => {
-      if (!msg.author || msg.channel.guild.id !== config.discord.ids.serverId || msg.author.bot) {
+      if (!msg.author || msg.channel.guild.id !== config.discord.ids.serverID || msg.author.bot) {
         return // Message not cached; let's just ignore
       }
 

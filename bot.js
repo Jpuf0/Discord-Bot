@@ -11,13 +11,16 @@ const task = require('./tasks')
 const autotag = require('./autotag')
 const memberLog = require('./memberlog');
 const { humanTime } = require("./utils");
+const fs = require('fs')
 
 const clientOptions = {
     intents: [
         'guilds',
         'guildMembers',
+        'GUILD_MEMBERS',
         'guildBans',
         'guildPresences',
+        'GUILD_PRESENCES',
         'guildMessages',
         'guildMessageReactions'
     ]
@@ -31,6 +34,8 @@ bot.registerCommand('rule', require('./commands/rule'), { description: 'Helps pe
 bot.registerCommand('snipe', require('./commands/snipe'), { description: 'Sends a copy of messages deleted or edited in the last 30 seconds.' })
 bot.registerCommand('tag', require('./commands/tag'), {description: 'Custom commands' })
 bot.registerCommand('help', require('./commands/help'), { description: 'Shows this very help message' })
+bot.registerCommand('profile', require('./commands/levels/profile'), {description: 'Shows a rank card for the server'})
+bot.registerCommand('userinfo', require('./commands/userinfo'), {description: 'Returns information of a user ID, mention or name'})
 
 //Moderator
 bot.registerCommand('edit', require('./commands/mod/edit'))

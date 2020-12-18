@@ -14,7 +14,7 @@ module.exports = {
   },
 
   memberAdd (guild, member) {
-    if (guild.id !== config.discord.ids.serverId) return
+    if (guild.id !== config.discord.ids.serverID) return
     const createdAt = new Date(member.createdAt)
     const now = new Date()
 
@@ -30,7 +30,7 @@ module.exports = {
   },
 
   memberRemove (guild, member) {
-    if (guild.id !== config.discord.ids.serverId) return
+    if (guild.id !== config.discord.ids.serverID) return
     const now = Date.now()
     let description = `<@${member.id}> was not in the cache when they left`
 
@@ -50,7 +50,7 @@ module.exports = {
   },
 
   memberUpdate (guild, newMember, oldMember) {
-    if (guild.id !== config.discord.ids.serverId) return
+    if (guild.id !== config.discord.ids.serverID) return
 
     let embed
 

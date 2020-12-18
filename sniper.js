@@ -7,18 +7,15 @@ module.exports = {
   
     register (bot) {
       bot.on('messageDelete', (msg) => {
-        if (!msg.author || msg.channel.guild.id !== config.discord.ids.serverId || msg.author.bot || isPrivate(msg.channel)) {
+        if (!msg.author || msg.channel.guild.id !== config.discord.ids.serverID || msg.author.bot || isPrivate(msg.channel)) {
           return // Let's ignore
         }
-  
-        this.catch(msg, 'delete')
       })
   
       bot.on('messageUpdate', (msg, old) => {
-        if (!old || !msg.author || msg.channel.guild.id !== config.discord.ids.serverId || msg.author.bot || msg.content === old.content || isPrivate(msg.channel)) {
+        if (!old || !msg.author || msg.channel.guild.id !== config.discord.ids.serverID || msg.author.bot || msg.content === old.content || isPrivate(msg.channel)) {
           return // Let's ignore
         }
-  
         this.catch({ ...msg, content: old.content }, 'edit')
       })
     },
@@ -38,5 +35,5 @@ module.exports = {
   }
   
 function isPrivate (channel) {
-  return channel.permissionOverwrites.filter(overwrite => overwrite.id === channel.guild.id && !overwrite.has('readMessages')).length === 1
+  return channel.permissionOverwrites.filter(overwrite => overwrite.id === '786961281747648572' && !overwrite.has('readMessages')).length === 1
 }

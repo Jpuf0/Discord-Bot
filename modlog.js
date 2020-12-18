@@ -2,9 +2,9 @@ const { Constants: { AuditLogActions } } = require('eris')
 const config = require('./config.json')
 
 const template = `
-**$type  |  Case: $case
-__User__: $user ($userID)
-__Moderator__: $moderator ($moderator)
+**$type | Case: $case**
+__User__: $user ($userid)
+__Moderator__: $moderator ($modid)
 __Reason__: $reason
 `.trim();
 
@@ -23,7 +23,7 @@ module.exports = {
         const entry = logs.entries.find(entry => (entry.targetID = user.id))
         const [ modId, modName, reason ] = this._processAuditEntry(entry)
         const channel = this.bot.getChannel(config.discord.ids.channelModLogs)
-        const caseId = parseInt((await channel.getMessages(1))[0].content.match(/Case (\d+)/)[1]) + 1
+        const caseId = parseInt((await channel.getMessages(1))[0].content.match(/Case: (\d+)/)[1]) + 1
   
         this.bot.createMessage(config.discord.ids.channelModLogs, template
           .replace('$type', banned ? 'Ban' : 'Unban')
@@ -43,8 +43,7 @@ module.exports = {
         const entry = logs.entries.find(entry => (entry.targetID = user.id))
         if (entry && Date.now() - Number((BigInt(entry.id) >> BigInt('22')) + BigInt('1420070400000')) < 5000) {
           const [ modId, modName, reason ] = this._processAuditEntry(entry)
-          const channel = this.bot.getChannel(config.discord.ids.channelModLogs)
-          const caseId = parseInt((await channel.getMessages(1))[0].content.match(/Case (\d+)/)[1]) + 1
+          const caseId = parseInt((await channel.getMessages(1))[0].content.match(/Case: (\d+)/)[1]) + 1
   
           this.bot.createMessage(config.discord.ids.channelModLogs, template
             .replace('$type', 'Kick')
@@ -76,7 +75,7 @@ module.exports = {
     async _logMute (entry, user, muted) {
       const [ modId, modName, reason ] = this._processAuditEntry(entry)
       const channel = this.bot.getChannel(config.discord.ids.channelModLogs)
-      const caseId = parseInt((await channel.getMessages(1))[0].content.match(/Case (\d+)/)[1]) + 1
+      const caseId = parseInt((await channel.getMessages(1))[0].content.match(/Case: (\d+)/)[1]) + 1
   
       this.bot.createMessage(config.discord.ids.channelModLogs, template
         .replace('$type', muted ? 'Mute' : 'Unmute')
