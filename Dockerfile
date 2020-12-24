@@ -9,15 +9,15 @@ LABEL maintainer="Remco Jongschaap hello@dougley.com" \
       commit=$commitsha
 
 # Don't run wildbeast as root (safety)
-RUN useradd -m -d /home/wildbeast -s /bin/bash wildbeast
-RUN mkdir /opt/wildbeast && chown wildbeast /opt/wildbeast -R
+RUN useradd -m -d /home/yui -s /bin/bash yui
+RUN mkdir /opt/yui && chown wildbeast /opt/yui -R
 # Copy files and install modules
-COPY . /opt/wildbeast
-WORKDIR /opt/wildbeast
+COPY . /opt/yui
+WORKDIR /opt/yui
 RUN npm i --production
 # Install optional native modules
 RUN npm i zlib-sync uws@10.148.1 https://github.com/discordapp/erlpack.git bufferutil sodium-native node-opus
 
 # Switch to wildbeast user and run entrypoint
-USER wildbeast
+USER yui
 CMD ["node", "index.js"]
