@@ -3,14 +3,14 @@ FROM node:14.2.0
 ARG buildno
 ARG commitsha
 
-LABEL maintainer="Remco Jongschaap hello@dougley.com" \
-      repository="https://github.com/TheSharks/WildBeast" \
+LABEL maintainer="Jpuf" \
+      repository="https://github.com/Jpuf/discord-bot" \
       buildno=$buildno \
       commit=$commitsha
 
 # Don't run wildbeast as root (safety)
 RUN useradd -m -d /home/yui -s /bin/bash yui
-RUN mkdir /opt/yui && chown wildbeast /opt/yui -R
+RUN mkdir /opt/yui && chown yui /opt/yui -R
 # Copy files and install modules
 COPY . /opt/yui
 WORKDIR /opt/yui
