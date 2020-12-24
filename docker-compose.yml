@@ -1,7 +1,7 @@
 version: '3'
 services:
   yui-shard-0:
-    image: Jpuf/discord-bot
+    image: jpuf/discord-bot
     volumes:
       - ./:/opt/yui/
     environment: 
@@ -12,7 +12,7 @@ services:
     - arango
     - lavalink
   yui-shard-1:
-    image: Jpuf/discord-bot
+    image: jpuf/discord-bot
     volumes:
       - ./:/opt/yui/
     environment: 
@@ -28,7 +28,7 @@ services:
       - arango
     environment:
       ARANGO_URI: http://arango:8529
-    image: Jpuf/discord-bot
+    image: jpuf/discord-bot
     volumes:
       - ./:/opt/yui/
     depends_on:
