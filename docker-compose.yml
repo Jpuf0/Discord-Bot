@@ -3,20 +3,20 @@ services:
   yui-shard-0:
     image: dougley/wildbeast
     volumes:
-      - ./:/opt/wildbeast/
+      - ./:/opt/yui/
     environment: 
-      - WILDBEAST_SHARDS_MINE=0
+      - YUI_SHARDS_MINE=0
     env_file:
       - .env
     links:
     - arango
     - lavalink
-  wildbeast-shard-1:
+  yui-shard-1:
     image: dougley/wildbeast
     volumes:
-      - ./:/opt/wildbeast/
+      - ./:/opt/yui/
     environment: 
-      - WILDBEAST_SHARDS_MINE=1
+      - YUI_SHARDS_MINE=1
     env_file:
       - .env
     links:
@@ -30,7 +30,7 @@ services:
       ARANGO_URI: http://arango:8529
     image: dougley/wildbeast
     volumes:
-      - ./:/opt/wildbeast/
+      - ./:/opt/yui/
     depends_on:
       - arango
     command: npm run-script dbcreate
